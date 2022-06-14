@@ -1,0 +1,67 @@
+import "./style.css";
+import "@logseq/libs";
+import { IHookEvent, SettingSchemaDesc } from "@logseq/libs/dist/LSPlugin";
+import { getSubtitles } from "youtube-captions-scraper";
+import getVideoId from "get-video-id";
+
+interface RunOpenYoutubeCommand {
+  type: "getall";
+}
+const settingsSchema: SettingSchemaDesc[] = [
+  {
+    key: "youtubeCaptionLanguage",
+    type: "string",
+    default: "en",
+    title: "Youtube Captions Language",
+    description:
+      "What langauge to get captions in. en, es, fr , de etc. See https://wp-info.org/tools/languagecodes.php",
+  }
+];
+
+logseq.useSettingsSchema(settingsSchema);
+
+async function runSubtitlesCommand(b: IHookEvent, cmd: RunOpenYoutubeCommand) {
+    const captionLanguage = logseq.settings!["youtubeCaptionLanguage"];
+
+  if (cmd.type === "getall") {
+    try {
+      const currentBlock = await logseq.Editor.getBlock(b.uuid);
+      if (currentBlock) {
+        const { id, service } = getVideoId(currentBlock.content);
+        let youtubeId;
+        if (service === "youtube") {
+          youtubeId = id;
+        }
+
+        if (youtubeId) {
+          console.log(`getting subtitles for ${youtubeId}`);
+          const subs = await getSubtitles({ videoID: youtubeId, lang: captionLanguage });
+          if (subs.length > 0) {
+            const allSubtitles = subs.map((s) => s.text).join("\n");
+            await logseq.Editor.insertBlock(currentBlock.uuid, allSubtitles);
+          }
+        } else {
+          console.warn("no youtube id found in block ${currentBlock.content}");
+          logseq.App.showMsg("warn", "No youtube id found in block");
+        }
+      }
+    } catch (e) {
+      console.error(e);
+      logseq.App.showMsg("error", "Error getting subtitles");
+    }
+  } else {
+    console.error("Unknown command type");
+  }
+}
+
+async function main() {
+  logseq.Editor.registerBlockContextMenuItem("get-youtube-captions", (e) =>
+    runSubtitlesCommand(e, { type: "getall" })
+  );
+
+  logseq.Editor.registerSlashCommand("get-youtube-captions", (e) =>
+    runSubtitlesCommand(e, { type: "getall" })
+  );
+}
+
+logseq.ready(main).catch(console.error);

@@ -1,0 +1,36 @@
+{
+  "name": "logseq-get-youtube-captions",
+  "private": true,
+  "version": "0.0.1",
+  "main": "dist/index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/exec": "6.0.3",
+    "@semantic-release/git": "10.0.1",
+    "@semantic-release/github": "^8.0.4",
+    "@semantic-release/npm": "9.0.1",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "semantic-release": "^19.0.2",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.9",
+    "vite-plugin-logseq": "^1.1.2"
+  },
+  "dependencies": {
+    "@logseq/libs": "^0.0.6",
+    "get-video-id": "^3.6.4",
+    "youtube-captions-scraper": "^2.0.0"
+  },
+  "logseq": {
+    "name": "logseq-get-youtube-captions",
+    "id": "_79u812x1a"
+  },
+  "peerDependencies": {
+    "semantic-release": "^19.0.2"
+  }
+}
