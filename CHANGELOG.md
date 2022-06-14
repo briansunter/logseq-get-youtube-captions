@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/briansunter/logseq-get-youtube-captions/compare/v1.0.0...v1.1.0) (2022-06-14)
+
+
+### Features
+
+* configure newlines in settings ([c361e2c](https://github.com/briansunter/logseq-get-youtube-captions/commit/c361e2cc34670022cb82336f02ce0479db41c447))
+
 # 1.0.0 (2022-06-14)
 
 
