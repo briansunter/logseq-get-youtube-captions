@@ -35,11 +35,25 @@ It supports setting the caption language to download. It will display an error i
 
 ![Demo](./docs/demo.gif)
 
+### Summarize
+
+![Summarize](./docs/summarize.png)
+
+I highly recommend combining this with my [logseq GPT3 OpenAI plugin](https://github.com/briansunter/logseq-plugin-gpt3-openai) for advanced text summarization, like getting the top 5 main points of a long video.
+
 ### Customize captions language to download
+
 ![Settings](./docs/settings.png)
 
 ### Download captions in your language
+
 ![Language](./docs/language.gif)
+
+### Put newlines between Captions
+
+This is a checkbox option in the settings. It might be better for some situations. Each caption line in the video is on it's own line in this mode.
+
+![newline](docs/newline.jpg)
 
 ## 📝 Table of Contents
 
@@ -69,6 +83,7 @@ Then run the open `get-youtube-captions` command via the slash or block menu. Th
 ## FAQ <a name = "faq"></a>
 
 ### I'm getting an error
+
 Check the console for errors. There may not be subtitles available in a given language.
 
 ### Installing
@@ -121,6 +136,7 @@ Creates a build using semantic release when a commit is pushed with a smart comm
 Do you have a bug or idea? I would love to hear from you! [Open a Github issue here.](https://github.com/briansunter/logseq-get-youtube-captions/issues/new)
 
 PRs welcome. [Open an issue](https://github.com/briansunter/logseq-get-youtube-captions/issues/new) to discuss first if possible.
+
 ## Authors <a name = "authors"></a>
 
 - [@briansunter](https://github.com/briansunter) - Author
