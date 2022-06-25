@@ -39,7 +39,7 @@ It supports setting the caption language to download. It will display an error i
 
 ![Summarize](./docs/summarize.png)
 
-I highly recommend combining this with my [logseq GPT3 OpenAI plugin](https://github.com/briansunter/logseq-plugin-gpt3-openai) for advanced text summarization, like getting the top 5 main points of a long video.
+I highly recommend combining this with my [logseq GPT3 OpenAI plugin](https://github.com/briansunter/logseq-plugin-gpt3-openai) for advanced text summarization, like getting the top 5 main points of a long video. There is a limit to the amount of text you can send, so you may need to break it up into chunks. Also, OpenAI is a bit expensive if you send it a lot of text. See if the [logseq-summarizer](https://github.com/trashhalo/logseq-summarizer) works for you as well. The summaries are simpler but the tool is free (unlike openai).
 
 ### Customize captions language to download
 
