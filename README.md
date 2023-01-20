@@ -49,12 +49,6 @@ I highly recommend combining this with my [logseq GPT3 OpenAI plugin](https://gi
 
 ![Language](./docs/language.gif)
 
-### Put newlines between Captions
-
-This is a checkbox option in the settings. It might be better for some situations. Each caption line in the video is on it's own line in this mode.
-
-![newline](docs/newline.jpg)
-
 ## 📝 Table of Contents
 
 - [About](#about)
