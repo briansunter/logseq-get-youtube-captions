@@ -50,6 +50,9 @@ async function getCaptions(b: IHookEvent) {
         if (subs.length > 0) {
           const allSubtitles = subs.map((s) => s.text).join(lineSplit);
           await logseq.Editor.insertBlock(currentBlock.uuid, allSubtitles);
+        } else {
+          console.warn(`no subtitles found for ${youtubeId}`);
+          logseq.App.showMsg("error", `No subtitles found for ${youtubeId}`);
         }
       } else {
         console.warn("no youtube id found in block ${currentBlock.content}");
