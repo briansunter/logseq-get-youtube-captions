@@ -1,7 +1,7 @@
 import "./style.css";
 import "@logseq/libs";
 import { IHookEvent, SettingSchemaDesc } from "@logseq/libs/dist/LSPlugin";
-import { getSubtitles } from "youtube-captions-scraper";
+import { getSubtitles, Caption } from "youtube-captions-scraper";
 import getVideoId from "get-video-id";
 
 const settingsSchema: SettingSchemaDesc[] = [
@@ -11,7 +11,7 @@ const settingsSchema: SettingSchemaDesc[] = [
     default: "en",
     title: "Youtube Captions Language",
     description:
-      "What langauge to get captions in. en, es, fr , de etc. See https://wp-info.org/tools/languagecodes.php",
+      "What language to get captions in. en, es, fr , de etc. See https://wp-info.org/tools/languagecodes.php.<br/>You can also specify multiple languages separated by commas.",
   },
   {
     key: "blockSize",
@@ -64,13 +64,11 @@ async function getCaptions(b: IHookEvent) {
       console.warn("no youtube id found in block ${currentBlock.content}");
       logseq.App.showMsg("No youtube id found in block", "warning");
       return;
-    }
+    }    
 
     console.log(`getting subtitles for ${youtubeId}`);
-    const subs = await getSubtitles({
-      videoID: youtubeId,
-      lang: captionLanguage,
-    });
+
+    const subs = await getSubtitlesMultiLanguage(youtubeId, captionLanguage);
 
     if (subs.length === 0) {
       console.warn(`no subtitles found for ${youtubeId}`);
@@ -118,6 +116,39 @@ async function getCaptions(b: IHookEvent) {
       logseq.App.showMsg(`Unknown Error getting subtitles`, "error");
     }
   }
+
+  async function getSubtitlesMultiLanguage(youtubeId: string, languages: string) : Promise<Caption[]> {
+    let listOfLanguages: string[] = languages.split(",").map((lang: string) => lang.trim());
+    let subs: Caption[] = [];
+    let errors = [];
+    for (const lang of listOfLanguages) {
+      try {
+        subs = await getSubtitles({
+          videoID: youtubeId,
+          lang: lang,
+        });
+        if (subs.length > 0) {
+          break;
+        }
+      } catch (e) {
+        console.error(e);
+        errors.push(e);
+      }
+    }
+
+    if (subs.length === 0 &&  errors.length > 0) {
+      for (const e of errors) {
+        if (e instanceof Error) {
+          logseq.App.showMsg(`Error getting subtitles: ${e.message}`, "error");
+        } else {
+          logseq.App.showMsg(`Unknown Error getting subtitles`, "error");
+        }
+      }
+    }  
+    
+    return subs;
+  }
+
 }
 
 async function main() {
