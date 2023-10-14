@@ -1,7 +1,7 @@
 import "./style.css";
 import "@logseq/libs";
 import { IHookEvent, SettingSchemaDesc } from "@logseq/libs/dist/LSPlugin";
-import { getSubtitles } from "youtube-captions-scraper";
+import { getSubtitles } from "youtube-caption-extractor";
 import getVideoId from "get-video-id";
 
 const settingsSchema: SettingSchemaDesc[] = [
@@ -66,9 +66,12 @@ async function getCaptions(b: IHookEvent) {
       return;
     }
 
-    console.log(`getting subtitles for ${youtubeId}`);
+    // remove }} in string
+    const youtubeIdWithoutTimestamp = youtubeId.replace("}}", "");
+    console.log(`getting subtitles for ${youtubeIdWithoutTimestamp}`);
+
     const subs = await getSubtitles({
-      videoID: youtubeId,
+      videoID: youtubeIdWithoutTimestamp,
       lang: captionLanguage,
     });
 
@@ -81,7 +84,7 @@ async function getCaptions(b: IHookEvent) {
     const captions = [];
     let currentCaption = "";
     for (const sub of subs) {
-      const currentTime = Math.floor(sub.start);
+      const currentTime = Math.floor(Number.parseInt(sub.start));
       let logseqYoutubeTimestamp = "";
       if (includeTimestamps) {
         logseqYoutubeTimestamp = `{{youtube-timestamp ${currentTime}}} `;
