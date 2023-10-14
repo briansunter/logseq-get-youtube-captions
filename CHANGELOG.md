@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/briansunter/logseq-get-youtube-captions/compare/v1.2.0...v1.3.0) (2023-10-14)
+
+
+### Features
+
+* **deps:** Use new captions library ([#14](https://github.com/briansunter/logseq-get-youtube-captions/issues/14)) ([abf770a](https://github.com/briansunter/logseq-get-youtube-captions/commit/abf770ae0d8f4d2828a1b1f788849aef7c113280))
+
 # [1.2.0](https://github.com/briansunter/logseq-get-youtube-captions/compare/v1.1.0...v1.2.0) (2023-01-20)
 
 
