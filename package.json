@@ -24,7 +24,7 @@
   "dependencies": {
     "@logseq/libs": "^0.0.6",
     "get-video-id": "^3.6.4",
-    "youtube-captions-scraper": "^2.0.0"
+    "youtube-caption-extractor": "^1.4.3"
   },
   "logseq": {
     "name": "logseq-get-youtube-captions",
