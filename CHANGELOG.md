@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/briansunter/logseq-get-youtube-captions/compare/v1.3.1...v1.3.2) (2025-07-29)
+
+
+### Bug Fixes
+
+* **ci:** Fix Release ([#18](https://github.com/briansunter/logseq-get-youtube-captions/issues/18)) ([b33e5b8](https://github.com/briansunter/logseq-get-youtube-captions/commit/b33e5b883741093e92659aa9653560a07ef02f71))
+
 ## [1.3.1](https://github.com/briansunter/logseq-get-youtube-captions/compare/v1.3.0...v1.3.1) (2025-07-29)
 
 
