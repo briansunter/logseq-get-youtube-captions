@@ -1,3 +1,11 @@
+## [1.3.1](https://github.com/briansunter/logseq-get-youtube-captions/compare/v1.3.0...v1.3.1) (2025-07-29)
+
+
+### Bug Fixes
+
+* **ci:** update pnpm/action-setup to v4 ([#17](https://github.com/briansunter/logseq-get-youtube-captions/issues/17)) ([148bcdb](https://github.com/briansunter/logseq-get-youtube-captions/commit/148bcdb48ff6d53c3ed0fdebb4573bd067187e90))
+* **library:** update captions extractor ([#16](https://github.com/briansunter/logseq-get-youtube-captions/issues/16)) ([6cccd1f](https://github.com/briansunter/logseq-get-youtube-captions/commit/6cccd1f4ca53f8332a5c099f2e89ca8e4c72c791))
+
 # [1.3.0](https://github.com/briansunter/logseq-get-youtube-captions/compare/v1.2.0...v1.3.0) (2023-10-14)
 
 
